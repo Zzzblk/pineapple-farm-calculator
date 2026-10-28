@@ -128,11 +128,21 @@ function formatDateTimeParts(timestamp, zone) {
   return { date: `${p.year}-${pad(p.month)}-${pad(p.day)}`, time: `${pad(p.hour)}:${pad(p.minute)}` };
 }
 
+function createDateText(value) {
+  const date = document.createElement("span");
+  date.className = "date-display";
+  date.textContent = value;
+  return date;
+}
+
+function setTextWithDate(element, prefix, date, suffix = "") {
+  element.replaceChildren(prefix, createDateText(date), suffix);
+}
+
 function setTimeCell(element, timestamp, zone) {
   const value = formatDateTimeParts(timestamp, zone);
-  const date = document.createElement("span");
+  const date = createDateText(value.date);
   const time = document.createElement("strong");
-  date.textContent = value.date;
   time.textContent = value.time;
   element.replaceChildren(date, time);
   element.dateTime = new Date(timestamp).toISOString();
@@ -295,13 +305,13 @@ function renderComparison(targetTimestamp) {
       cell.className = `comparison-cell${state.crop === key && state.fertilizer === bonus ? " is-current" : ""}`;
       if (state.mode === "reverse") {
         const value = formatDateTimeParts(comparisonPlantTimestamp(CROPS[key], bonus, targetTimestamp), BEIJING_ZONE);
-        cell.innerHTML = `<small>${value.date.slice(5)}</small><strong>${value.time}</strong>`;
+        cell.innerHTML = `<small class="date-display">${value.date.slice(5)}</small><strong>${value.time}</strong>`;
       } else {
         const values = comparisonHarvestTimestamps(CROPS[key], bonus, targetTimestamp);
         const half = formatDateTimeParts(values.half, BEIJING_ZONE);
         const ripe = formatDateTimeParts(values.ripe, BEIJING_ZONE);
         cell.classList.add("comparison-cell--harvest");
-        cell.innerHTML = `<span><i>半熟</i><small>${half.date.slice(5)}</small><strong>${half.time}</strong></span><span><i>成熟</i><small>${ripe.date.slice(5)}</small><strong>${ripe.time}</strong></span>`;
+        cell.innerHTML = `<span><i>半熟</i><small class="date-display">${half.date.slice(5)}</small><strong>${half.time}</strong></span><span><i>成熟</i><small class="date-display">${ripe.date.slice(5)}</small><strong>${ripe.time}</strong></span>`;
       }
       cells.push(cell);
     });
@@ -327,7 +337,7 @@ function render() {
   } else {
     const plantBeijing = formatDateTimeParts(plantTimestamp, BEIJING_ZONE);
     elements.duration.textContent = `北京 ${plantBeijing.time}`;
-    elements.subtitle.textContent = `${plantBeijing.date} 建议种下`;
+    setTextWithDate(elements.subtitle, "", plantBeijing.date, " 建议种下");
   }
 
   setTimeCell(elements.cells.plant.beijing, plantTimestamp, BEIJING_ZONE);
@@ -371,11 +381,11 @@ function render() {
     if (state.mode === "reverse") {
       elements.resultKicker.textContent = `${state.targetStage === "ripe" ? "成熟" : "半熟"}目标 · 多方案倒推`;
       elements.duration.textContent = "多方案下种子时间";
-      elements.subtitle.textContent = `${state.weekend ? "有" : "无"}周末加成计算 · 目标${state.targetStage === "ripe" ? "成熟" : "半熟"}时间：${inputBeijing.date} ${inputBeijing.time}`;
+      setTextWithDate(elements.subtitle, `${state.weekend ? "有" : "无"}周末加成计算 · 目标${state.targetStage === "ripe" ? "成熟" : "半熟"}时间：`, inputBeijing.date, ` ${inputBeijing.time}`);
     } else {
       elements.resultKicker.textContent = "种下时间 · 多方案正算";
       elements.duration.textContent = "多方案半熟 / 成熟时间";
-      elements.subtitle.textContent = `${state.weekend ? "有" : "无"}周末加成计算 · 种下时间：${inputBeijing.date} ${inputBeijing.time}`;
+      setTextWithDate(elements.subtitle, `${state.weekend ? "有" : "无"}周末加成计算 · 种下时间：`, inputBeijing.date, ` ${inputBeijing.time}`);
     }
     elements.mobileResultLabel.textContent = "多方案对比";
     elements.mobileBeijingTime.textContent = "查看 16 组时间";
