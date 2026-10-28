@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#fbf6ea" />
+    <meta name="description" content="逆水寒手游菠萝农场种植与收获时间计算器。" />
+    <link rel="preload" href="./assets/fonts/lemi-zhixia-qianfeng.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23c9e3e7'/%3E%3Cpath d='M31 22c-7-8-3-15 1-18 1 7 5 10 8 12 1-7 5-10 9-11 0 7-3 12-8 17M28 21c-2-7-8-10-13-10 2 7 7 11 12 13' fill='none' stroke='%236f513c' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M16 33c1-9 8-14 17-14 11 0 18 7 17 18-1 14-8 23-17 23S15 50 16 33Z' fill='%23efc98d' stroke='%236f513c' stroke-width='3'/%3E%3C/svg%3E" />
+    <title>菠萝农场计算器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="splash" aria-labelledby="page-title">
+        <div class="splash__dot splash__dot--one" aria-hidden="true"></div>
+        <div class="splash__dot splash__dot--two" aria-hidden="true"></div>
+        <div class="splash__scene" aria-hidden="true">
+          <svg viewBox="0 0 560 350" role="img">
+            <path class="scene-blob" d="M74 105c47-70 124-91 206-68 63-48 155-26 181 44 55 32 62 111 14 150-15 66-95 96-155 66-69 44-160 17-178-50-71-5-105-86-68-142Z" />
+            <g class="doodle-cloud"><path d="M83 86c6-18 35-19 43 1 22-12 44 3 39 23H75c-11-7-6-22 8-24Z" /><path d="M415 62c4-12 22-13 28 0 14-8 29 2 25 15h-59c-7-4-4-14 6-15Z" /></g>
+            <g class="sparkles"><path d="M72 164v18m-9-9h18M466 139v22m-11-11h22M399 28v13m-7-6h14" /></g>
+            <g class="stall">
+              <path class="stall-back" d="M154 128h258v150H154Z" /><path class="stall-roof" d="M135 111h296l-18 44H153Z" />
+              <path class="stall-stripe" d="m178 111-5 44m52-44-2 44m52-44v44m51-44 2 44m50-44 5 44" /><path class="stall-line" d="M158 156v127m250-127v127M139 283h292" />
+              <path class="shelf" d="M183 222h198v15H183Z" /><path class="awning" d="M153 155c8 18 32 18 40 0 8 18 33 18 41 0 8 18 32 18 40 0 8 18 33 18 41 0 8 18 32 18 40 0 8 18 33 18 41 0" />
+            </g>
+            <g class="fruit-crates">
+              <path d="M174 239h76l-7 42h-62Zm145 0h72l-6 42h-60Z" /><path d="m180 251 65 20m1-20-65 20m144-18 60 16m0-16-60 16" />
+              <circle cx="190" cy="236" r="10" /><circle cx="211" cy="234" r="11" /><circle cx="234" cy="236" r="10" /><circle cx="337" cy="235" r="10" /><circle cx="359" cy="233" r="12" /><circle cx="380" cy="236" r="9" />
+            </g>
+            <g class="pineapple-pal">
+              <path class="leaf" d="M267 170c-10-21 1-35 10-42 0 14 6 23 13 29 2-17 12-26 23-28-1 17-8 28-19 37 13-10 27-9 36-3-8 12-20 17-36 17" />
+              <path class="body" d="M256 192c3-22 19-34 39-33 23 1 37 17 34 41-4 32-17 52-39 51-22-1-38-25-34-59Z" /><path class="fruit-grid" d="m263 180 54 52m-61-29 40 42m18-75-54 57m65-34-43 50" />
+              <path class="face" d="M273 196h1m32 0h1m-26 15c6 6 13 6 19 0" /><path class="limbs" d="M257 207c-15-1-22 5-25 14m95-13c13 1 20 8 22 16m-70 26-5 18m32-17 5 17" /><path class="wave" d="M232 221c-8-7-13-13-14-22m0 0c8 2 12 6 14 12m-14-12c-2 7-1 13 2 18" />
+            </g>
+            <g class="ground"><path d="M92 286c52-17 111-14 160 4 71-17 143-16 211 2M112 302c96 18 233 18 331-1" /></g>
+          </svg>
+        </div>
+        <h1 id="page-title">菠萝农场计算器</h1>
+        <p class="splash__sponsor">比奇堡农场独家冠名</p>
+        <a class="splash__button" href="#calculator">开始计算 <span aria-hidden="true">↓</span></a>
+      </header>
+
+      <main id="calculator" class="main-content">
+        <div class="calculator-grid">
+        <section class="paper-card setup-card" aria-labelledby="setup-title">
+          <div class="section-heading"><span class="step-number">01—04</span><div><h2 id="setup-title">种植与时间设置</h2><p>四步集中完成，结果同步更新</p></div></div>
+          <div class="config-table">
+          <div class="config-row config-row--crops"><div class="config-row__label"><b>01</b><span>选择作物</span></div><div class="config-row__content crop-grid" id="cropOptions" role="radiogroup" aria-label="选择作物">
+            <button class="crop-option is-selected" type="button" role="radio" aria-checked="true" data-crop="short"><span class="crop-option__fruit" aria-hidden="true">🍓</span><span class="crop-option__time">15分钟</span><small>香蕉 · 柠檬 · 石榴 · 草莓</small><span class="check-mark" aria-hidden="true">✓</span></button>
+            <button class="crop-option" type="button" role="radio" aria-checked="false" data-crop="medium"><span class="crop-option__fruit" aria-hidden="true">🍍</span><span class="crop-option__time">1小时</span><small>菠萝 · 杨桃 · 榴莲</small><span class="check-mark" aria-hidden="true">✓</span></button>
+            <button class="crop-option crop-option--new" type="button" role="radio" aria-checked="false" data-crop="peach"><span class="new-tag">新</span><span class="crop-option__fruit" aria-hidden="true">🍑</span><span class="crop-option__time">6小时</span><small>桃子</small><span class="check-mark" aria-hidden="true">✓</span></button>
+            <button class="crop-option" type="button" role="radio" aria-checked="false" data-crop="long"><span class="crop-option__fruit" aria-hidden="true">🥑</span><span class="crop-option__time">16小时</span><small>火龙果 · 牛油果 · 山竹 · 甘蔗</small><span class="check-mark" aria-hidden="true">✓</span></button>
+          </div></div>
+
+          <div class="config-row config-row--bonus"><div class="config-row__label"><b>02</b><span>生长加成</span></div><div class="config-row__content"><div class="settings-panel">
+            <div class="weekend-control"><div><b>周末加成</b><small>游戏活动 +5%</small></div><label class="switch"><input id="weekendToggle" type="checkbox" /><span class="switch__track"><span class="switch__thumb"></span></span><span class="sr-only">启用周末 5% 加成</span></label></div>
+            <div class="field-group">
+              <div class="field-label-row"><label>肥料加成</label><span>进入半熟前使用</span></div>
+              <div class="fertilizer-grid" id="fertilizerOptions" role="radiogroup" aria-label="选择肥料">
+                <button class="fertilizer-option is-selected" type="button" role="radio" aria-checked="true" data-bonus="0"><span>不施肥</span><small>自然生长</small></button>
+                <button class="fertilizer-option" type="button" role="radio" aria-checked="false" data-bonus="0.1"><span>蓝肥</span><small>+10%</small></button>
+                <button class="fertilizer-option" type="button" role="radio" aria-checked="false" data-bonus="0.3"><span>紫肥</span><small>+30%</small></button>
+                <button class="fertilizer-option" type="button" role="radio" aria-checked="false" data-bonus="0.5"><span>金肥</span><small>+50%</small></button>
+              </div>
+            </div>
+          </div><div class="speed-strip" aria-live="polite"><span class="speed-strip__sprout" aria-hidden="true"><i></i></span><div><small>当前生长速度</small><strong id="speedValue">×1.00</strong></div><p id="savingText">按原始时长生长</p></div></div></div>
+
+          <div class="config-row config-row--mode"><div class="config-row__label"><b>03</b><span id="time-title">计算方式</span></div><div class="config-row__content calculation-choice"><div class="mode-tabs" role="tablist" aria-label="计算方式">
+            <button class="mode-tab is-selected" id="forwardTab" type="button" role="tab" aria-selected="true" data-mode="forward"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M21 35V18m0 8c-8-1-12-5-12-11 7 0 11 4 12 11Zm1-5c7-1 11-6 10-12-6 1-10 5-10 12Z" /></svg><span><b>算收获时间</b><small>我准备种下</small></span></button>
+            <button class="mode-tab" id="reverseTab" type="button" role="tab" aria-selected="false" data-mode="reverse"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M11 6h20M11 36h20M14 7c0 8 3 11 7 14-4 3-7 6-7 14m14-28c0 8-3 11-7 14 4 3 7 6 7 14M16 12h10m-9 18 4-4 4 4" /></svg><span><b>反推种植时间</b><small>我想准时收获</small></span></button>
+          </div>
+          <div class="target-stage" id="targetStageControl" hidden><span>目标状态</span><div role="radiogroup" aria-label="选择目标状态"><button class="stage-option is-selected" type="button" role="radio" aria-checked="true" data-stage="half"><span>进入半熟</span><small>水果出问号的时间</small></button><button class="stage-option" type="button" role="radio" aria-checked="false" data-stage="ripe"><span>成熟收获</span></button></div></div>
+          </div></div>
+          <div class="config-row config-row--time"><div class="config-row__label"><b>04</b><span>时间</span></div><div class="config-row__content time-form">
+            <div class="time-form__top"><label id="timeFieldLabel" for="dateInput">种下的时间</label><span class="time-basis-badge" id="timeBasisBadge">按北京时间输入</span></div>
+            <div class="input-zone-control" id="inputZoneControl" role="radiogroup" aria-label="选择输入时间的时区">
+              <button class="input-zone-option is-selected" type="button" role="radio" aria-checked="true" data-input-zone="beijing"><b>北京时间</b><small>游戏时间 UTC+8</small></button>
+              <button class="input-zone-option" type="button" role="radio" aria-checked="false" data-input-zone="local"><b>我的当地时间</b><small id="inputLocalZone">自动识别设备</small></button>
+            </div>
+            <div class="date-time-grid"><label class="input-shell"><span aria-hidden="true">▦</span><input id="dateInput" type="date" /><span class="weekday-badge" id="weekdayBadge">星期—</span></label><label class="input-shell"><span aria-hidden="true">◷</span><input id="timeInput" type="time" step="60" /></label></div>
+            <div class="time-toolbar">
+              <button class="now-button" id="nowButton" type="button">设为现在</button>
+              <div class="tool-toggle tool-toggle--overseas"><span><b>海外时间对照</b><small>手动查询海外时间对照时开启</small></span><label class="switch"><input id="dualTimezoneToggle" type="checkbox" /><span class="switch__track"><span class="switch__thumb"></span></span><span class="sr-only">开启海外时间对照</span></label><span class="timezone-select-shell timezone-select-shell--settings"><select id="secondaryTimezoneSelect" aria-label="选择第二时区"><option value="device">跟随我的设备</option><option value="Europe/Moscow">莫斯科</option><option value="Asia/Tokyo">东京</option><option value="Asia/Seoul">首尔</option><option value="Asia/Singapore">新加坡</option><option value="Europe/London">伦敦</option><option value="Europe/Paris">巴黎</option><option value="America/New_York">纽约</option><option value="America/Los_Angeles">洛杉矶</option><option value="America/Toronto">多伦多</option><option value="Australia/Sydney">悉尼</option><option value="Asia/Dubai">迪拜</option></select></span></div>
+              <label class="tool-toggle tool-toggle--compare"><span><b>多方案对比</b><small>比较作物与肥料时间</small></span><span class="switch"><input id="comparisonToggle" type="checkbox" /><span class="switch__track"><span class="switch__thumb"></span></span></span></label>
+            </div>
+            <p class="input-note" id="inputNote">正算时可以选择按北京或当地时间输入。</p>
+          </div></div>
+          </div>
+        </section>
+
+        <section class="result-card" id="resultCard" aria-labelledby="result-title" aria-live="polite">
+          <div class="result-flower result-flower--one" aria-hidden="true">✦</div><div class="result-flower result-flower--two" aria-hidden="true">✦</div>
+          <div class="result-head"><div><span class="result-kicker" id="resultKicker">短熟果 · 收获安排</span><h2 id="result-title"><span id="durationValue">15分钟</span></h2><p id="resultSubtitle">种下后成熟所需时间</p></div></div>
+          <div class="timezone-overview" id="timezoneOverview" hidden>
+            <div><span>游戏基准</span><b>北京时间</b><small>Asia/Shanghai · UTC+8</small></div>
+            <div class="secondary-zone-card"><span>第二时区</span><b id="localTimezoneName">当地时间</b><small id="timezoneDifference">正在识别时区</small></div>
+          </div>
+          <div class="schedule-table" id="scheduleTable" role="table" aria-label="种植时间双时区对照">
+            <div class="schedule-row schedule-row--head" role="row"><span role="columnheader">节点</span><span role="columnheader">北京时间</span><span class="secondary-zone" id="secondaryZoneHeader" role="columnheader">第二时区</span></div>
+            <div class="schedule-row" role="row"><div class="timeline__label" role="rowheader"><span class="timeline__dot timeline__dot--seed" aria-hidden="true"></span><b>种下</b><small>开始生长</small></div><time id="plantBeijingTime" role="cell">—</time><time class="secondary-zone" id="plantLocalTime" role="cell">—</time></div>
+            <div class="schedule-row" role="row"><div class="timeline__label" role="rowheader"><span class="timeline__dot timeline__dot--half" aria-hidden="true"></span><b>半熟</b><small id="halfOffset">种下后 —</small></div><time id="halfBeijingTime" role="cell">—</time><time class="secondary-zone" id="halfLocalTime" role="cell">—</time></div>
+            <div class="schedule-row" role="row"><div class="timeline__label" role="rowheader"><span class="timeline__dot timeline__dot--ripe" aria-hidden="true"></span><b>成熟</b><small id="ripeOffset">半熟后约 —</small></div><time id="ripeBeijingTime" role="cell">—</time><time class="secondary-zone" id="ripeLocalTime" role="cell">—</time></div>
+          </div>
+          <div class="comparison-panel" id="comparisonPanel" hidden><div class="comparison-table" id="comparisonTable" role="table" aria-label="不同作物和肥料的时间对比"></div></div>
+          <div class="result-stats" id="resultStats"><div><small>比无加成提前成熟</small><strong id="savedDuration">0分钟</strong></div><div><small>半熟时距离成熟</small><strong id="halfRemaining">3分钟</strong></div></div>
+          <p class="result-warning" id="resultWarning" hidden><span aria-hidden="true">!</span><span id="warningText">建议种植时间已经过去，请把目标时间往后调整。</span></p>
+          <p class="result-local-note">计算与设置只保存在你的设备中</p>
+        </section>
+        </div>
+
+        <section class="rules-card" id="rulesSection"><button class="rules-toggle" id="rulesToggle" type="button" aria-expanded="false" aria-controls="rulesContent"><span><i aria-hidden="true">?</i> 计算规则与说明</span><span class="rules-toggle__symbol" aria-hidden="true">＋</span></button><div class="rules-content" id="rulesContent" hidden><div class="formula-box"><span>总速度</span><b>1 + 周末加成 + 肥料加成</b><span>成熟时长</span><b>基础时长 ÷ 总速度</b></div><p>四档作物的基础成熟时长分别为 15 分钟、1 小时、6 小时和 16 小时；进入半熟后距离成熟的基础时长分别为 3、5、10、10 分钟。</p><p>反推“半熟”时按半熟节点倒推，反推“成熟”时按完整成熟时长倒推。界面统一显示到分钟，内部计算保留原始精度。</p><p>选择周五、周六或周日时会默认开启周末加成，其余日期默认关闭；自动联动后仍可手动调整。跨周末或中途施肥时，请以游戏倒计时为准。</p></div></section>
+        <footer><span aria-hidden="true">🍍</span><p><strong>菠萝农场计算器</strong><br />玩家自制非游戏官方出品 · 需求捉虫游戏内联系968801127</p><small>所有计算均在本机完成，不请求个人信息，也不上传种植数据。</small></footer>
+      </main>
+    </div>
+    <a class="mobile-result-peek" id="mobileResultPeek" href="#resultCard" aria-label="查看完整时间对照">
+      <span><small id="mobileResultLabel">成熟时间</small><strong id="mobileBeijingTime">北京 --:--</strong></span>
+      <i aria-hidden="true"></i>
+      <span><small id="mobileSecondaryLabel">第二时区</small><strong id="mobileLocalTime">--:--</strong></span>
+      <b aria-hidden="true">↑</b>
+    </a>
+    <script src="./app.js"></script>
+  </body>
+</html>
