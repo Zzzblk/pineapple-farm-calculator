@@ -427,7 +427,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
   .config-row .crop-option__time { font-size: 11px; }
   .config-row .crop-option small { min-height: 18px; font-size: 6px; }
   .config-row .settings-panel { grid-template-columns: 86px minmax(0, 1fr); gap: 8px; }
-  .config-row .weekend-control { padding: 0 8px 0 0; border-right: 1px solid #eadfce; border-bottom: 0; }
+  .config-row .weekend-control { flex-direction: column; align-items: flex-start; justify-content: center; gap: 7px; padding: 0 8px 0 0; border-right: 1px solid #eadfce; border-bottom: 0; }
+  .config-row .weekend-control > div { width: 100%; }
+  .config-row .weekend-control .switch { align-self: flex-start; }
   .config-row .weekend-control b { font-size: 10px; }
   .config-row .weekend-control small { font-size: 7px; }
   .config-row .switch__track { width: 38px; height: 23px; }
