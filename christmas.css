@@ -33,6 +33,7 @@
   --dur-micro: 120ms;
   --dur-short: 220ms;
   --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --crop-card-heading-lift: -4px;
 }
 
 html,
@@ -283,6 +284,18 @@ body.theme-christmas {
   background: var(--xmas-paper);
 }
 
+.theme-christmas .config-row--crops .crop-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.theme-christmas .config-row--crops .crop-option__fruit,
+.theme-christmas .config-row--crops .crop-option__time {
+  transform: translateY(var(--crop-card-heading-lift));
+}
+
 .theme-christmas .crop-option small {
   display: block;
   height: 1.2em;
@@ -292,6 +305,53 @@ body.theme-christmas {
   white-space: nowrap;
   text-overflow: ellipsis;
   -webkit-line-clamp: 1;
+}
+
+.theme-christmas .crop-option .crop-option__names {
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: 1.2em;
+  align-items: center;
+  justify-content: center;
+  gap: 0 .55em;
+  overflow: visible;
+  font-size: clamp(6px, .62vw, 9px);
+  line-height: 1.2;
+  white-space: normal;
+  text-overflow: clip;
+  -webkit-line-clamp: initial;
+}
+
+.theme-christmas .crop-option .crop-option__names span {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.theme-christmas .crop-option[data-crop="short"] .crop-option__names {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: var(--space-3xs);
+}
+
+@media (max-width: 640px) {
+  .theme-christmas .config-row .crop-option .crop-option__names {
+    display: grid;
+    min-height: 16px;
+    gap: var(--space-3xs);
+    font-size: clamp(5px, 1.45vw, 6px);
+    line-height: 1.05;
+  }
+
+  .theme-christmas .crop-option[data-crop="short"] .crop-option__names,
+  .theme-christmas .crop-option[data-crop="medium"] .crop-option__names,
+  .theme-christmas .crop-option[data-crop="peach"] .crop-option__names {
+    grid-template-columns: repeat(3, max-content);
+  }
+
+  .theme-christmas .crop-option[data-crop="long"] .crop-option__names {
+    grid-template-columns: repeat(2, max-content);
+  }
 }
 
 .theme-christmas .settings-panel {
@@ -865,6 +925,14 @@ body.theme-christmas {
 .theme-christmas .mode-tabs,
 .theme-christmas .target-stage {
   background: var(--xmas-ivory-deep);
+}
+
+.theme-christmas .target-stage > div {
+  background: var(--xmas-green-wash);
+}
+
+.theme-christmas .stage-option {
+  color: var(--xmas-pine-deep);
 }
 
 .theme-christmas .mode-tab.is-selected,
