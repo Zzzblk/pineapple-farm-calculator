@@ -3,55 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#fbf6ea" />
-    <meta name="description" content="逆水寒手游菠萝农场种植与收获时间计算器。" />
+    <meta name="theme-color" content="#174733" />
+    <meta name="description" content="圣诞限定的逆水寒手游菠萝农场种植与收获时间计算器。" />
     <link rel="preload" href="./assets/fonts/lemi-zhixia-qianfeng.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23c9e3e7'/%3E%3Cpath d='M31 22c-7-8-3-15 1-18 1 7 5 10 8 12 1-7 5-10 9-11 0 7-3 12-8 17M28 21c-2-7-8-10-13-10 2 7 7 11 12 13' fill='none' stroke='%236f513c' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M16 33c1-9 8-14 17-14 11 0 18 7 17 18-1 14-8 23-17 23S15 50 16 33Z' fill='%23efc98d' stroke='%236f513c' stroke-width='3'/%3E%3C/svg%3E" />
     <title>菠萝农场计算器</title>
     <link rel="stylesheet" href="./styles.css?v=20261028-4" />
+    <link rel="stylesheet" href="./christmas.css?v=20261125-2" />
+    <link rel="stylesheet" href="./hero-christmas.css?v=20261125-3" />
   </head>
-  <body>
+  <body class="theme-christmas">
     <div class="page-shell">
-      <header class="splash" aria-labelledby="page-title">
-        <div class="splash__dot splash__dot--one" aria-hidden="true"></div>
-        <div class="splash__dot splash__dot--two" aria-hidden="true"></div>
-        <div class="splash__scene" aria-hidden="true">
-          <svg viewBox="0 0 560 350" role="img">
-            <path class="scene-blob" d="M74 105c47-70 124-91 206-68 63-48 155-26 181 44 55 32 62 111 14 150-15 66-95 96-155 66-69 44-160 17-178-50-71-5-105-86-68-142Z" />
-            <g class="doodle-cloud"><path d="M83 86c6-18 35-19 43 1 22-12 44 3 39 23H75c-11-7-6-22 8-24Z" /><path d="M415 62c4-12 22-13 28 0 14-8 29 2 25 15h-59c-7-4-4-14 6-15Z" /></g>
-            <g class="sparkles"><path d="M72 164v18m-9-9h18M466 139v22m-11-11h22M399 28v13m-7-6h14" /></g>
-            <g class="stall">
-              <path class="stall-back" d="M154 128h258v150H154Z" /><path class="stall-roof" d="M135 111h296l-18 44H153Z" />
-              <path class="stall-stripe" d="m178 111-5 44m52-44-2 44m52-44v44m51-44 2 44m50-44 5 44" /><path class="stall-line" d="M158 156v127m250-127v127M139 283h292" />
-              <path class="shelf" d="M183 222h198v15H183Z" /><path class="awning" d="M153 155c8 18 32 18 40 0 8 18 33 18 41 0 8 18 32 18 40 0 8 18 33 18 41 0 8 18 32 18 40 0 8 18 33 18 41 0" />
-            </g>
-            <g class="fruit-crates">
-              <path d="M174 239h76l-7 42h-62Zm145 0h72l-6 42h-60Z" /><path d="m180 251 65 20m1-20-65 20m144-18 60 16m0-16-60 16" />
-              <circle cx="190" cy="236" r="10" /><circle cx="211" cy="234" r="11" /><circle cx="234" cy="236" r="10" /><circle cx="337" cy="235" r="10" /><circle cx="359" cy="233" r="12" /><circle cx="380" cy="236" r="9" />
-            </g>
-            <g class="pineapple-pal">
-              <path class="leaf" d="M267 170c-10-21 1-35 10-42 0 14 6 23 13 29 2-17 12-26 23-28-1 17-8 28-19 37 13-10 27-9 36-3-8 12-20 17-36 17" />
-              <path class="body" d="M256 192c3-22 19-34 39-33 23 1 37 17 34 41-4 32-17 52-39 51-22-1-38-25-34-59Z" /><path class="fruit-grid" d="m263 180 54 52m-61-29 40 42m18-75-54 57m65-34-43 50" />
-              <path class="face" d="M273 196h1m32 0h1m-26 15c6 6 13 6 19 0" /><path class="limbs" d="M257 207c-15-1-22 5-25 14m95-13c13 1 20 8 22 16m-70 26-5 18m32-17 5 17" /><path class="wave" d="M232 221c-8-7-13-13-14-22m0 0c8 2 12 6 14 12m-14-12c-2 7-1 13 2 18" />
-            </g>
-            <g class="ground"><path d="M92 286c52-17 111-14 160 4 71-17 143-16 211 2M112 302c96 18 233 18 331-1" /></g>
-          </svg>
-        </div>
-        <h1 id="page-title">菠萝农场计算器</h1>
-        <p class="splash__sponsor">比奇堡农场独家冠名</p>
-        <a class="splash__button" href="#calculator">开始计算 <span aria-hidden="true">↓</span></a>
+      <header class="splash splash--christmas-showcase" aria-labelledby="page-title">
+        <figure class="splash__christmas-scene splash__christmas-scene--showcase" data-slot="hero" data-alt="六位角色在三联圣诞橱窗中庆祝节日">
+          <img src="./assets/images/christmas-three-window-hero.png?v=20261125-3" width="1024" height="1536" alt="六位角色分别坐在三扇圣诞橱窗中，周围装饰着常青枝、铃铛、礼物和白雪" fetchpriority="high" />
+          <figcaption class="splash__title-sign">
+            <h1 id="page-title">菠萝农场计算器</h1>
+            <p class="splash__sponsor">比奇堡农场独家冠名</p>
+          </figcaption>
+          <a class="splash__button splash__button--hanging-sign" href="#calculator">开始计算</a>
+        </figure>
       </header>
 
       <main id="calculator" class="main-content">
         <div class="calculator-grid">
         <section class="paper-card setup-card" aria-labelledby="setup-title">
-          <div class="section-heading"><div><h2 id="setup-title">种植与时间设置</h2><p>四步集中完成，结果同步更新</p></div></div>
+          <div class="section-heading"><div><h2 id="setup-title">种植与时间设置</h2><p>四步集中完成，结果同步更新</p></div><button class="reset-button" id="resetButton" type="button">重置全部</button></div>
           <div class="config-table">
           <div class="config-row config-row--crops"><div class="config-row__label"><b>01</b><span>选择作物</span></div><div class="config-row__content crop-grid" id="cropOptions" role="radiogroup" aria-label="选择作物">
-            <button class="crop-option is-selected" type="button" role="radio" aria-checked="true" data-crop="short"><span class="crop-option__fruit" aria-hidden="true">🍓</span><span class="crop-option__time">15分钟</span><small>香蕉 · 柠檬 · 石榴 · 草莓</small><span class="check-mark" aria-hidden="true">✓</span></button>
-            <button class="crop-option" type="button" role="radio" aria-checked="false" data-crop="medium"><span class="crop-option__fruit" aria-hidden="true">🍍</span><span class="crop-option__time">1小时</span><small>菠萝 · 杨桃 · 榴莲</small><span class="check-mark" aria-hidden="true">✓</span></button>
-            <button class="crop-option crop-option--new" type="button" role="radio" aria-checked="false" data-crop="peach"><span class="new-tag">新</span><span class="crop-option__fruit" aria-hidden="true">🍑</span><span class="crop-option__time">6小时</span><small>桃子</small><span class="check-mark" aria-hidden="true">✓</span></button>
-            <button class="crop-option" type="button" role="radio" aria-checked="false" data-crop="long"><span class="crop-option__fruit" aria-hidden="true">🥑</span><span class="crop-option__time">16小时</span><small>火龙果 · 牛油果 · 山竹 · 甘蔗</small><span class="check-mark" aria-hidden="true">✓</span></button>
+            <button class="crop-option crop-option--new is-selected" type="button" role="radio" aria-checked="true" data-crop="short"><span class="new-tag">新</span><span class="crop-option__fruit" aria-hidden="true">🍓</span><span class="crop-option__time">15分钟</span><small title="香蕉、柠檬、石榴、草莓、橘子、樱桃" aria-label="香蕉、柠檬、石榴、草莓、橘子、樱桃">草莓等6种</small><span class="check-mark" aria-hidden="true">✓</span></button>
+            <button class="crop-option" type="button" role="radio" aria-checked="false" data-crop="medium"><span class="crop-option__fruit" aria-hidden="true">🍍</span><span class="crop-option__time">1小时</span><small title="菠萝、杨桃、榴莲" aria-label="菠萝、杨桃、榴莲">杨桃等3种</small><span class="check-mark" aria-hidden="true">✓</span></button>
+            <button class="crop-option crop-option--new" type="button" role="radio" aria-checked="false" data-crop="peach"><span class="new-tag">新</span><span class="crop-option__fruit" aria-hidden="true">🍎</span><span class="crop-option__time">6小时</span><small title="桃子、柿子、苹果" aria-label="桃子、柿子、苹果">苹果等3种</small><span class="check-mark" aria-hidden="true">✓</span></button>
+            <button class="crop-option" type="button" role="radio" aria-checked="false" data-crop="long"><span class="crop-option__fruit" aria-hidden="true">🥑</span><span class="crop-option__time">16小时</span><small title="火龙果、牛油果、山竹、甘蔗" aria-label="火龙果、牛油果、山竹、甘蔗">甘蔗等4种</small><span class="check-mark" aria-hidden="true">✓</span></button>
           </div></div>
 
           <div class="config-row config-row--bonus"><div class="config-row__label"><b>02</b><span>生长加成</span></div><div class="config-row__content"><div class="settings-panel">
@@ -106,12 +89,12 @@
           <div class="comparison-panel" id="comparisonPanel" hidden><div class="comparison-table" id="comparisonTable" role="table" aria-label="不同作物和肥料的时间对比"></div></div>
           <div class="result-stats" id="resultStats"><div><small>比无加成提前成熟</small><strong id="savedDuration">0分钟</strong></div><div><small>半熟时距离成熟</small><strong id="halfRemaining">3分钟</strong></div></div>
           <p class="result-warning" id="resultWarning" hidden><span aria-hidden="true">!</span><span id="warningText">建议种植时间已经过去，请把目标时间往后调整。</span></p>
-          <p class="result-local-note">计算与设置只保存在你的设备中</p>
+          <p class="result-local-note">计算只在当前页面完成，刷新后自动重置</p>
         </section>
         </div>
 
         <section class="rules-card" id="rulesSection"><button class="rules-toggle" id="rulesToggle" type="button" aria-expanded="false" aria-controls="rulesContent"><span><i aria-hidden="true">?</i> 计算规则与说明</span><span class="rules-toggle__symbol" aria-hidden="true">＋</span></button><div class="rules-content" id="rulesContent" hidden><div class="formula-box"><span>总速度</span><b>1 + 周末加成 + 肥料加成</b><span>成熟时长</span><b>基础时长 ÷ 总速度</b></div><p>四档作物的基础成熟时长分别为 15 分钟、1 小时、6 小时和 16 小时；进入半熟后距离成熟的基础时长分别为 3、5、10、10 分钟。</p><p>反推“半熟”时按半熟节点倒推，反推“成熟”时按完整成熟时长倒推。界面统一显示到分钟，内部计算保留原始精度。</p><p>选择周五、周六或周日时会默认开启周末加成，其余日期默认关闭；自动联动后仍可手动调整。跨周末或中途施肥时，请以游戏倒计时为准。</p></div></section>
-        <footer><span aria-hidden="true">🍍</span><p><strong>菠萝农场计算器</strong><br />玩家自制非游戏官方出品 · 需求捉虫游戏内联系968801127</p><small>所有计算均在本机完成，不请求个人信息，也不上传种植数据。</small></footer>
+        <footer><span aria-hidden="true">🍍</span><p><strong>菠萝农场计算器</strong><br />玩家自制非游戏官方出品 · 需求捉虫游戏内联系968801127</p><small>所有计算均在本机完成，不请求个人信息，也不上传种植数据；刷新页面后会自动重置。</small></footer>
       </main>
     </div>
     <a class="mobile-result-peek" id="mobileResultPeek" href="#resultCard" aria-label="查看完整时间对照">
@@ -120,6 +103,7 @@
       <span><small id="mobileSecondaryLabel">第二时区</small><strong id="mobileLocalTime">--:--</strong></span>
       <b aria-hidden="true">↑</b>
     </a>
-    <script src="./app.js?v=20261028-4"></script>
+    <p class="sr-only" id="resetStatus" aria-live="polite"></p>
+    <script src="./app.js?v=20261125-1"></script>
   </body>
 </html>

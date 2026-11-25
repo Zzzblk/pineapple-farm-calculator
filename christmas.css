@@ -1,0 +1,1184 @@
+/* Christmas seasonal layer. The daily theme remains in styles.css. */
+
+:root {
+  --xmas-pine: oklch(38% 0.09 151);
+  --xmas-pine-deep: oklch(25% 0.065 151);
+  --xmas-pine-soft: oklch(92% 0.035 148);
+  --xmas-red: oklch(51% 0.155 27);
+  --xmas-red-deep: oklch(40% 0.13 27);
+  --xmas-gold: oklch(78% 0.105 82);
+  --xmas-gold-soft: oklch(96% 0.025 87);
+  --xmas-cream: oklch(98% 0.014 91);
+  --xmas-paper: oklch(99% 0.008 93);
+  --xmas-paper-2: oklch(96% 0.022 148);
+  --xmas-ink: oklch(25% 0.045 151);
+  --xmas-muted: oklch(48% 0.025 151);
+  --xmas-rule: oklch(82% 0.04 148);
+  --xmas-focus: oklch(80% 0.15 84);
+  --xmas-white-ink: oklch(97% 0.018 88);
+  --xmas-shadow: oklch(19% 0.04 154 / 0.18);
+  --xmas-red-wash: oklch(94% 0.035 27);
+  --xmas-green-wash: oklch(95% 0.028 151);
+  --xmas-selected: oklch(94% 0.04 27);
+  --xmas-disabled: oklch(88% 0.012 90);
+  --xmas-symbol-font: Arial, sans-serif;
+  --space-3xs: 2px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body.theme-christmas {
+  --cream: var(--xmas-cream);
+  --cream-deep: var(--xmas-gold-soft);
+  --paper: var(--xmas-paper);
+  --paper-warm: var(--xmas-paper-2);
+  --brown: var(--xmas-pine-deep);
+  --brown-soft: var(--xmas-red);
+  --ink: var(--xmas-ink);
+  --muted: var(--xmas-muted);
+  --blue: var(--xmas-pine-soft);
+  --blue-deep: var(--xmas-pine);
+  --blue-ink: var(--xmas-pine-deep);
+  --apricot: var(--xmas-gold);
+  --green: var(--xmas-pine);
+  --line: var(--xmas-rule);
+  --shadow: 0 var(--space-sm) var(--space-xl) var(--xmas-shadow);
+  color: var(--xmas-white-ink);
+  background: var(--xmas-pine);
+  font-synthesis: none;
+}
+
+.theme-christmas .page-shell {
+  overflow-x: clip;
+  color: var(--xmas-ink);
+  background: var(--xmas-cream);
+}
+
+.theme-christmas .splash {
+  min-height: 0;
+  padding: max(var(--space-lg), env(safe-area-inset-top)) var(--space-lg) var(--space-2xl);
+  background: var(--xmas-cream);
+  text-align: center;
+}
+
+.theme-christmas .splash::before {
+  display: none;
+}
+
+.theme-christmas .splash::after {
+  bottom: calc(-1 * var(--space-sm));
+  height: var(--space-lg);
+  background: var(--xmas-pine);
+  border-radius: 50% 50% 0 0 / 55% 55% 0 0;
+}
+
+.theme-christmas .splash__dot,
+.theme-christmas .splash__scene {
+  display: none;
+}
+
+.splash__christmas-scene {
+  display: none;
+}
+
+.theme-christmas .splash__christmas-scene {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(740px, 100%);
+  margin: 0 0 var(--space-md);
+  padding: var(--space-sm);
+  overflow: hidden;
+  border: 1px solid var(--xmas-gold);
+  border-radius: var(--space-lg);
+  background: var(--xmas-paper);
+  aspect-ratio: auto;
+}
+
+.theme-christmas .splash__christmas-scene::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: var(--space-lg);
+  left: var(--space-lg);
+  height: var(--space-xs);
+  border-radius: 0 0 var(--space-xs) var(--space-xs);
+  background: repeating-linear-gradient(90deg, var(--xmas-red) 0 var(--space-lg), var(--xmas-paper) var(--space-lg) var(--space-xl), var(--xmas-pine) var(--space-xl) var(--space-2xl));
+}
+
+.theme-christmas .splash__christmas-scene img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  border-radius: var(--space-md);
+}
+
+.theme-christmas .splash h1 {
+  margin: 0;
+  color: var(--xmas-pine-deep);
+  font-size: clamp(36px, 5vw, 54px);
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1.05;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.theme-christmas .splash h1::after {
+  width: 58%;
+  height: var(--space-2xs);
+  margin-top: var(--space-xs);
+  background: var(--xmas-gold);
+  border-radius: var(--space-2xs);
+}
+
+.theme-christmas .splash__sponsor {
+  color: var(--xmas-red-deep);
+}
+
+.theme-christmas .splash__button {
+  min-height: 48px;
+  margin-top: var(--space-md);
+  border: var(--space-3xs) solid var(--xmas-gold);
+  border-radius: var(--space-md);
+  color: var(--xmas-white-ink);
+  background: var(--xmas-red);
+  box-shadow: none;
+  transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+
+.theme-christmas .splash__button span {
+  color: var(--xmas-pine-deep);
+  background: var(--xmas-gold);
+}
+
+.theme-christmas .splash__button:hover {
+  background: var(--xmas-red-deep);
+  box-shadow: none;
+  transform: translateY(-1px);
+}
+
+.theme-christmas .splash__button:active {
+  transform: translateY(1px);
+}
+
+.theme-christmas .splash__button:focus-visible,
+.theme-christmas .reset-button:focus-visible {
+  outline: var(--space-3xs) solid var(--xmas-focus);
+  outline-offset: var(--space-2xs);
+}
+
+.theme-christmas .main-content {
+  margin-top: 0;
+  padding-top: var(--space-lg);
+}
+
+.theme-christmas .paper-card,
+.theme-christmas .rules-card {
+  border-color: var(--xmas-rule);
+  background: var(--xmas-paper);
+  box-shadow: none;
+}
+
+.theme-christmas .section-heading {
+  justify-content: space-between;
+}
+
+.theme-christmas .section-heading > div {
+  min-width: 0;
+}
+
+.theme-christmas .section-heading h2 {
+  color: var(--xmas-pine-deep);
+  font-size: clamp(30px, 3vw, 40px);
+  line-height: 1.1;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.theme-christmas .section-heading p {
+  color: var(--xmas-muted);
+}
+
+.reset-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--xmas-red);
+  border-radius: var(--space-sm);
+  color: var(--xmas-red-deep);
+  background: var(--xmas-paper);
+  transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+
+.reset-button:hover {
+  background: var(--xmas-red-wash);
+}
+
+.reset-button:active {
+  transform: translateY(1px);
+}
+
+.theme-christmas .config-table {
+  border-color: var(--xmas-rule);
+}
+
+.theme-christmas .config-row + .config-row,
+.theme-christmas .config-row__label,
+.theme-christmas .weekend-control {
+  border-color: var(--xmas-rule);
+}
+
+.theme-christmas .config-row__label {
+  color: var(--xmas-pine-deep);
+  background: var(--xmas-pine-soft);
+}
+
+.theme-christmas .config-row__label b {
+  color: var(--xmas-red);
+}
+
+.theme-christmas .crop-option,
+.theme-christmas .fertilizer-option,
+.theme-christmas .mode-tabs,
+.theme-christmas .input-zone-option,
+.theme-christmas .tool-toggle {
+  background: var(--xmas-paper-2);
+}
+
+.theme-christmas .crop-option.is-selected,
+.theme-christmas .fertilizer-option.is-selected,
+.theme-christmas .input-zone-option.is-selected {
+  border-color: var(--xmas-red);
+  background: var(--xmas-selected);
+  box-shadow: inset 0 0 0 var(--space-3xs) var(--xmas-paper);
+}
+
+.theme-christmas .check-mark,
+.theme-christmas .new-tag {
+  color: var(--xmas-white-ink);
+  background: var(--xmas-red);
+}
+
+.theme-christmas .crop-option__fruit {
+  background: var(--xmas-paper);
+}
+
+.theme-christmas .crop-option small {
+  display: block;
+  height: 1.2em;
+  min-height: 0;
+  overflow: hidden;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+}
+
+.theme-christmas .settings-panel {
+  background: var(--xmas-paper);
+}
+
+.theme-christmas .speed-strip {
+  color: var(--xmas-pine-deep);
+  background: var(--xmas-pine-soft);
+}
+
+.theme-christmas .mode-tab.is-selected,
+.theme-christmas .stage-option.is-selected {
+  color: var(--xmas-pine-deep);
+  background: var(--xmas-paper);
+  box-shadow: inset 0 0 0 var(--space-3xs) var(--xmas-red);
+}
+
+.theme-christmas .target-stage {
+  background: var(--xmas-green-wash);
+}
+
+.theme-christmas .input-shell,
+.theme-christmas .timezone-select-shell--settings {
+  border-color: var(--xmas-rule);
+  background: var(--xmas-paper);
+}
+
+.theme-christmas .weekday-badge,
+.theme-christmas .time-basis-badge {
+  color: var(--xmas-pine-deep);
+  background: var(--xmas-pine-soft);
+}
+
+.theme-christmas .now-button {
+  color: var(--xmas-white-ink);
+  background: var(--xmas-pine);
+}
+
+.theme-christmas .now-button:hover {
+  background: var(--xmas-pine-deep);
+}
+
+.theme-christmas .switch__track {
+  background: var(--xmas-disabled);
+}
+
+.theme-christmas .switch input:checked + .switch__track {
+  background: var(--xmas-red);
+}
+
+.theme-christmas .switch__thumb {
+  background: var(--xmas-paper);
+}
+
+.theme-christmas .result-card {
+  border-color: var(--xmas-pine);
+  color: var(--xmas-pine-deep);
+  background: var(--xmas-green-wash);
+  box-shadow: none;
+}
+
+.theme-christmas .result-card::after {
+  border-color: color-mix(in oklab, var(--xmas-pine) 18%, transparent);
+  box-shadow: 0 0 0 var(--space-lg) color-mix(in oklab, var(--xmas-paper) 30%, transparent), 0 0 0 var(--space-xl) color-mix(in oklab, var(--xmas-gold) 14%, transparent);
+}
+
+.theme-christmas .result-flower {
+  color: var(--xmas-red);
+}
+
+.theme-christmas .schedule-table,
+.theme-christmas .comparison-table {
+  border-color: var(--xmas-rule);
+  background: var(--xmas-paper);
+}
+
+.theme-christmas .schedule-row,
+.theme-christmas .comparison-cell {
+  border-color: var(--xmas-rule);
+}
+
+.theme-christmas .schedule-row.is-focus,
+.theme-christmas .comparison-cell.is-current {
+  background: var(--xmas-selected);
+  box-shadow: inset 0 0 0 1px var(--xmas-red);
+}
+
+.theme-christmas .comparison-cell--head {
+  color: var(--xmas-pine-deep);
+  background: var(--xmas-pine-soft);
+}
+
+.theme-christmas .result-stats > div,
+.theme-christmas .timezone-overview > div {
+  background: var(--xmas-paper);
+}
+
+.theme-christmas .result-warning {
+  color: var(--xmas-red-deep);
+  background: var(--xmas-red-wash);
+}
+
+.theme-christmas .rules-toggle i {
+  color: var(--xmas-paper);
+  background: var(--xmas-red);
+}
+
+.theme-christmas .splash__button span,
+.theme-christmas .check-mark,
+.theme-christmas .result-warning > span:first-child,
+.theme-christmas .rules-toggle i,
+.theme-christmas .mobile-result-peek b {
+  display: grid;
+  padding: 0;
+  place-items: center;
+  font-family: var(--xmas-symbol-font);
+  line-height: 1;
+  text-align: center;
+}
+
+.theme-christmas .check-mark {
+  display: none;
+}
+
+.theme-christmas .crop-option.is-selected .check-mark {
+  display: grid;
+}
+
+.theme-christmas footer {
+  color: var(--xmas-white-ink);
+}
+
+.theme-christmas footer strong {
+  color: var(--xmas-gold-soft);
+}
+
+.theme-christmas .mobile-result-peek {
+  border-color: var(--xmas-gold);
+  color: var(--xmas-pine-deep);
+  background: var(--xmas-paper);
+  box-shadow: 0 var(--space-xs) var(--space-lg) var(--xmas-shadow);
+}
+
+.theme-christmas .mobile-result-peek b {
+  color: var(--xmas-white-ink);
+  background: var(--xmas-red);
+}
+
+@media (max-width: 900px) {
+  .theme-christmas .splash {
+    padding-inline: var(--space-md);
+  }
+
+  .theme-christmas .splash__christmas-scene {
+    width: min(700px, 100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-christmas .splash {
+    padding: max(var(--space-md), env(safe-area-inset-top)) var(--space-sm) var(--space-xl);
+  }
+
+  .theme-christmas .splash__christmas-scene {
+    margin-bottom: var(--space-sm);
+    border-radius: var(--space-md);
+  }
+
+  .theme-christmas .splash h1 {
+    font-size: 34px;
+  }
+
+  .theme-christmas .section-heading {
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  .theme-christmas .section-heading h2 {
+    font-size: 25px;
+  }
+
+  .reset-button {
+    min-height: 40px;
+    padding-inline: var(--space-sm);
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 370px) {
+  .theme-christmas .splash h1 {
+    font-size: 30px;
+  }
+
+  .theme-christmas .section-heading h2 {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-christmas .splash__button,
+  .theme-christmas .reset-button {
+    transition: none;
+  }
+}
+
+/* Integrated Christmas stage */
+body.theme-christmas {
+  --xmas-pine: #0f4b2d;
+  --xmas-pine-deep: #07351f;
+  --xmas-pine-mid: #1f6542;
+  --xmas-ivory: #fffaf0;
+  --xmas-ivory-deep: #f7efd9;
+  --xmas-gold: #d9ac4b;
+  --xmas-gold-light: #f4d986;
+  --xmas-red: #a92f32;
+  --xmas-red-deep: #7f2027;
+  --xmas-holly: #c94942;
+  --xmas-ink: #103b29;
+  --xmas-muted: #617467;
+  --xmas-rule: #d9bf78;
+  --xmas-snow: rgba(255, 250, 240, .78);
+  --xmas-gold-glow: rgba(244, 217, 134, .5);
+  --xmas-green-shadow: rgba(7, 53, 31, .24);
+  --xmas-red-wash: #f9e8e1;
+  --xmas-green-wash: #edf5ea;
+  --xmas-paper: var(--xmas-ivory);
+  --xmas-paper-2: var(--xmas-ivory-deep);
+  --xmas-selected: var(--xmas-ivory-deep);
+  --cream: var(--xmas-ivory);
+  --cream-deep: var(--xmas-ivory-deep);
+  --paper: var(--xmas-ivory);
+  --paper-warm: var(--xmas-ivory-deep);
+  --brown: var(--xmas-pine-deep);
+  --brown-soft: var(--xmas-red);
+  --ink: var(--xmas-ink);
+  --muted: var(--xmas-muted);
+  --blue: var(--xmas-green-wash);
+  --blue-deep: var(--xmas-pine-mid);
+  --blue-ink: var(--xmas-pine-deep);
+  --apricot: var(--xmas-gold);
+  --green: var(--xmas-pine-mid);
+  --line: var(--xmas-rule);
+  background: var(--xmas-pine-deep);
+}
+
+.theme-christmas .page-shell {
+  background: var(--xmas-ivory);
+}
+
+.theme-christmas .splash {
+  isolation: isolate;
+  min-height: 820px;
+  padding: max(38px, env(safe-area-inset-top)) 24px 170px;
+  justify-content: flex-start;
+  background:
+    radial-gradient(circle at 8% 14%, var(--xmas-snow) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 22%, var(--xmas-snow) 0 2px, transparent 3px),
+    radial-gradient(circle at 18% 46%, var(--xmas-gold-light) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 55%, var(--xmas-snow) 0 1.5px, transparent 2.5px),
+    linear-gradient(180deg, var(--xmas-pine-deep), var(--xmas-pine));
+}
+
+.theme-christmas .splash::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: block;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background:
+    radial-gradient(circle at 6% 70%, var(--xmas-snow) 0 2px, transparent 3px),
+    radial-gradient(circle at 95% 76%, var(--xmas-gold-light) 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 12%, var(--xmas-snow) 0 1px, transparent 2px),
+    radial-gradient(circle at 32% 8%, var(--xmas-gold-light) 0 1px, transparent 2px);
+  opacity: .72;
+  transform: none;
+  pointer-events: none;
+}
+
+.theme-christmas .splash::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 28px;
+  width: min(520px, calc(100% - 48px));
+  height: 185px;
+  border: 2px solid var(--xmas-gold);
+  border-radius: 34px 34px 52px 52px;
+  background: var(--xmas-pine-deep);
+  box-shadow: 0 18px 36px var(--xmas-green-shadow), inset 0 0 0 5px rgba(244, 217, 134, .08);
+  transform: translateX(-50%);
+}
+
+.theme-christmas .splash__christmas-scene {
+  z-index: 1;
+  width: min(880px, calc(100% - 40px));
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 42px;
+  background: transparent;
+  box-shadow: 0 22px 54px var(--xmas-green-shadow), 0 0 0 2px var(--xmas-gold);
+}
+
+.theme-christmas .splash__christmas-scene::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: -17px;
+  right: 18px;
+  left: 18px;
+  height: 50px;
+  border-top: 18px solid var(--xmas-pine-mid);
+  border-radius: 50% 50% 18% 18%;
+  background:
+    radial-gradient(circle at 8% 17px, var(--xmas-red) 0 6px, transparent 7px),
+    radial-gradient(circle at 24% 9px, var(--xmas-gold-light) 0 4px, transparent 5px),
+    radial-gradient(circle at 43% 18px, var(--xmas-holly) 0 5px, transparent 6px),
+    radial-gradient(circle at 62% 8px, var(--xmas-gold-light) 0 4px, transparent 5px),
+    radial-gradient(circle at 79% 18px, var(--xmas-red) 0 6px, transparent 7px),
+    radial-gradient(circle at 94% 9px, var(--xmas-gold-light) 0 4px, transparent 5px);
+  filter: drop-shadow(0 6px 6px var(--xmas-green-shadow));
+  pointer-events: none;
+}
+
+.theme-christmas .splash__christmas-scene::after {
+  display: none;
+}
+
+.theme-christmas .splash__dot {
+  position: absolute;
+  z-index: 2;
+  top: 150px;
+  display: block;
+  width: 34px;
+  height: 42px;
+  border: 2px solid var(--xmas-gold);
+  border-radius: 50% 50% 46% 46%;
+  background: var(--xmas-red);
+  box-shadow: inset 0 -8px 0 var(--xmas-red-deep), 0 0 16px var(--xmas-gold-glow);
+  opacity: 1;
+}
+
+.theme-christmas .splash__dot::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 1px;
+  height: 95px;
+  background: var(--xmas-gold);
+}
+
+.theme-christmas .splash__dot::after {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 12px;
+  height: 7px;
+  border-radius: 4px 4px 0 0;
+  background: var(--xmas-gold);
+  transform: translateX(-50%);
+}
+
+.theme-christmas .splash__dot--one {
+  left: calc(50% - 505px);
+}
+
+.theme-christmas .splash__dot--two {
+  right: calc(50% - 505px);
+  left: auto;
+  top: 275px;
+  width: 28px;
+  height: 35px;
+  background: var(--xmas-gold);
+  box-shadow: inset 0 -7px 0 #b98529, 0 0 16px var(--xmas-gold-glow);
+}
+
+.theme-christmas .splash__christmas-scene img {
+  width: 100%;
+  border-radius: 40px;
+  outline: 6px solid var(--xmas-ivory);
+  outline-offset: -6px;
+}
+
+.theme-christmas .splash h1,
+.theme-christmas .splash__sponsor,
+.theme-christmas .splash__button {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.theme-christmas .splash h1 {
+  bottom: 132px;
+  width: min(460px, calc(100% - 72px));
+  margin: 0;
+  color: var(--xmas-ivory);
+  font-size: clamp(38px, 4.5vw, 54px);
+  line-height: 1;
+  letter-spacing: .06em;
+}
+
+.theme-christmas .splash h1::after {
+  width: 44%;
+  height: 3px;
+  margin-top: 10px;
+  background: var(--xmas-gold);
+}
+
+.theme-christmas .splash__sponsor {
+  bottom: 104px;
+  width: 100%;
+  margin: 0;
+  color: var(--xmas-gold-light);
+}
+
+.theme-christmas .splash__button {
+  bottom: 49px;
+  min-width: 150px;
+  min-height: 48px;
+  margin: 0;
+  border: 1px solid var(--xmas-gold);
+  border-radius: 16px;
+  color: var(--xmas-ivory);
+  background: var(--xmas-red);
+  box-shadow: 0 5px 0 var(--xmas-red-deep);
+}
+
+.theme-christmas .splash__button:hover {
+  background: var(--xmas-red-deep);
+  box-shadow: 0 3px 0 var(--xmas-red-deep);
+  transform: translate(-50%, 2px);
+}
+
+.theme-christmas .splash__button:active {
+  transform: translate(-50%, 4px);
+}
+
+.theme-christmas .main-content {
+  padding-top: 30px;
+}
+
+.theme-christmas .paper-card,
+.theme-christmas .rules-card {
+  border: 1px solid var(--xmas-rule);
+  background: var(--xmas-ivory);
+}
+
+.theme-christmas .setup-card {
+  position: relative;
+}
+
+.theme-christmas .setup-card::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 150px;
+  width: 64px;
+  height: 16px;
+  background:
+    radial-gradient(circle at 12px 8px, var(--xmas-red) 0 5px, transparent 6px),
+    radial-gradient(circle at 32px 8px, var(--xmas-gold) 0 4px, transparent 5px),
+    radial-gradient(circle at 52px 8px, var(--xmas-red) 0 5px, transparent 6px);
+  opacity: .9;
+}
+
+.theme-christmas .section-heading h2 {
+  color: var(--xmas-pine-deep);
+}
+
+.theme-christmas .reset-button {
+  border-color: var(--xmas-red);
+  color: var(--xmas-red-deep);
+  background: var(--xmas-ivory);
+}
+
+.theme-christmas .config-table {
+  border-color: var(--xmas-rule);
+  background: var(--xmas-ivory);
+}
+
+.theme-christmas .config-row + .config-row,
+.theme-christmas .config-row__label,
+.theme-christmas .weekend-control {
+  border-color: var(--xmas-rule);
+}
+
+.theme-christmas .config-row__label {
+  color: var(--xmas-gold-light);
+  background: var(--xmas-pine-deep);
+}
+
+.theme-christmas .config-row__label b {
+  color: var(--xmas-gold);
+}
+
+.theme-christmas .crop-option,
+.theme-christmas .fertilizer-option,
+.theme-christmas .mode-tabs,
+.theme-christmas .input-zone-option,
+.theme-christmas .tool-toggle {
+  background: var(--xmas-ivory-deep);
+}
+
+.theme-christmas .crop-option {
+  border-color: transparent;
+}
+
+.theme-christmas .crop-option:hover {
+  border-color: var(--xmas-gold);
+}
+
+.theme-christmas .crop-option.is-selected {
+  border-color: var(--xmas-gold);
+  color: var(--xmas-ivory);
+  background: var(--xmas-pine);
+  box-shadow: inset 0 0 0 2px var(--xmas-gold-light);
+}
+
+.theme-christmas .crop-option.is-selected .crop-option__time,
+.theme-christmas .crop-option.is-selected small {
+  color: var(--xmas-ivory);
+}
+
+.theme-christmas .new-tag,
+.theme-christmas .check-mark {
+  color: var(--xmas-ivory);
+  background: var(--xmas-red);
+}
+
+.theme-christmas .settings-panel {
+  border-color: var(--xmas-rule);
+  background: var(--xmas-ivory);
+}
+
+.theme-christmas .fertilizer-option.is-selected,
+.theme-christmas .input-zone-option.is-selected {
+  border-color: var(--xmas-gold);
+  color: var(--xmas-pine-deep);
+  background: var(--xmas-gold-light);
+  box-shadow: none;
+}
+
+.theme-christmas .speed-strip {
+  color: var(--xmas-ivory);
+  background: var(--xmas-pine);
+}
+
+.theme-christmas .speed-strip__sprout {
+  border-color: var(--xmas-gold);
+}
+
+.theme-christmas .speed-strip__sprout::before,
+.theme-christmas .speed-strip__sprout::after {
+  border-color: var(--xmas-gold-light);
+}
+
+.theme-christmas .speed-strip__sprout i {
+  background: var(--xmas-gold-light);
+}
+
+.theme-christmas .mode-tabs,
+.theme-christmas .target-stage {
+  background: var(--xmas-ivory-deep);
+}
+
+.theme-christmas .mode-tab.is-selected,
+.theme-christmas .stage-option.is-selected {
+  color: var(--xmas-ivory);
+  background: var(--xmas-pine-deep);
+  box-shadow: inset 0 0 0 2px var(--xmas-gold);
+}
+
+.theme-christmas .mode-tab.is-selected svg {
+  stroke: var(--xmas-gold-light);
+}
+
+.theme-christmas .mode-tab.is-selected small,
+.theme-christmas .stage-option.is-selected small {
+  color: var(--xmas-gold-light);
+}
+
+.theme-christmas .input-shell,
+.theme-christmas .timezone-select-shell--settings {
+  border-color: var(--xmas-rule);
+  background: var(--xmas-ivory);
+}
+
+.theme-christmas .time-basis-badge,
+.theme-christmas .weekday-badge {
+  color: var(--xmas-pine-deep);
+  background: var(--xmas-gold-light);
+}
+
+.theme-christmas .now-button {
+  color: var(--xmas-ivory);
+  background: var(--xmas-pine-deep);
+}
+
+.theme-christmas .switch input:checked + .switch__track {
+  background: var(--xmas-red);
+}
+
+.theme-christmas .result-card {
+  border: 2px solid var(--xmas-gold);
+  color: var(--xmas-ivory);
+  background: var(--xmas-pine-deep);
+}
+
+.theme-christmas .result-card::after {
+  border-color: rgba(244, 217, 134, .22);
+  box-shadow: 0 0 0 25px rgba(244, 217, 134, .08), 0 0 0 50px rgba(255, 250, 240, .05);
+}
+
+.theme-christmas .result-head,
+.theme-christmas .result-head h2,
+.theme-christmas .result-head p,
+.theme-christmas .result-kicker {
+  color: var(--xmas-ivory);
+}
+
+.theme-christmas .result-flower {
+  color: var(--xmas-gold-light);
+}
+
+.theme-christmas .schedule-table,
+.theme-christmas .comparison-table,
+.theme-christmas .timezone-overview > div,
+.theme-christmas .result-stats > div {
+  color: var(--xmas-ink);
+  background: var(--xmas-ivory);
+}
+
+.theme-christmas .schedule-row,
+.theme-christmas .comparison-cell {
+  border-color: rgba(15, 75, 45, .22);
+}
+
+.theme-christmas .schedule-row.is-focus,
+.theme-christmas .comparison-cell.is-current {
+  background: var(--xmas-gold-light);
+  box-shadow: inset 4px 0 0 var(--xmas-red);
+}
+
+.theme-christmas .comparison-cell--head {
+  color: var(--xmas-ivory);
+  background: var(--xmas-pine);
+}
+
+.theme-christmas .result-local-note {
+  color: var(--xmas-gold-light);
+}
+
+.theme-christmas .rules-card {
+  border-color: var(--xmas-gold);
+}
+
+.theme-christmas .rules-toggle i {
+  color: var(--xmas-ivory);
+  background: var(--xmas-red);
+}
+
+.theme-christmas footer {
+  color: var(--xmas-ivory-deep);
+  background: var(--xmas-pine-deep);
+}
+
+.theme-christmas footer strong {
+  color: var(--xmas-gold-light);
+}
+
+.theme-christmas .mobile-result-peek {
+  border-color: var(--xmas-gold);
+  background: var(--xmas-ivory);
+}
+
+@media (max-width: 900px) {
+  .theme-christmas .splash {
+    min-height: 0;
+    padding: max(24px, env(safe-area-inset-top)) 14px 158px;
+  }
+
+  .theme-christmas .splash__christmas-scene {
+    width: min(740px, calc(100% - 12px));
+    border-radius: 28px;
+  }
+
+  .theme-christmas .splash__christmas-scene img {
+    border-radius: 27px;
+  }
+
+  .theme-christmas .splash__christmas-scene::after {
+    display: none;
+  }
+
+  .theme-christmas .splash__dot {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-christmas .splash {
+    padding: max(18px, env(safe-area-inset-top)) 10px 148px;
+  }
+
+  .theme-christmas .splash::after {
+    bottom: 16px;
+    width: calc(100% - 36px);
+    height: 155px;
+    border-radius: 24px 24px 34px 34px;
+  }
+
+  .theme-christmas .splash__christmas-scene {
+    width: calc(100% - 16px);
+    border-radius: 22px;
+  }
+
+  .theme-christmas .splash__christmas-scene img {
+    border-radius: 21px;
+    outline-width: 4px;
+    outline-offset: -4px;
+  }
+
+  .theme-christmas .splash__christmas-scene::before {
+    top: -10px;
+    right: 8px;
+    left: 8px;
+    height: 34px;
+    border-top-width: 12px;
+    background:
+      radial-gradient(circle at 10% 12px, var(--xmas-red) 0 4px, transparent 5px),
+      radial-gradient(circle at 28% 6px, var(--xmas-gold-light) 0 3px, transparent 4px),
+      radial-gradient(circle at 50% 13px, var(--xmas-holly) 0 4px, transparent 5px),
+      radial-gradient(circle at 72% 6px, var(--xmas-gold-light) 0 3px, transparent 4px),
+      radial-gradient(circle at 90% 12px, var(--xmas-red) 0 4px, transparent 5px);
+  }
+
+  .theme-christmas .splash__christmas-scene::after {
+    display: none;
+  }
+
+  .theme-christmas .splash h1 {
+    bottom: 112px;
+    font-size: 30px;
+  }
+
+  .theme-christmas .splash__sponsor {
+    bottom: 88px;
+  }
+
+  .theme-christmas .splash__button {
+    bottom: 34px;
+    min-width: 140px;
+    min-height: 44px;
+  }
+
+  .theme-christmas .setup-card::before {
+    display: none;
+  }
+
+  .theme-christmas .config-row__label {
+    color: var(--xmas-gold-light);
+  }
+}
+
+/* Hero refinement: one continuous scene, without a nested title card. */
+.theme-christmas .splash {
+  min-height: 0;
+  padding: max(38px, env(safe-area-inset-top)) 24px 82px;
+}
+
+.theme-christmas .splash::after {
+  z-index: 0;
+  right: -5%;
+  bottom: -30px;
+  left: -5%;
+  width: auto;
+  height: 64px;
+  border: 0;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: var(--xmas-ivory);
+  box-shadow: none;
+  transform: none;
+}
+
+.theme-christmas .splash__christmas-scene {
+  width: min(920px, calc(100% - 40px));
+  overflow: hidden;
+  border-radius: 42px 42px 14% 14% / 42px 42px 7% 7%;
+  box-shadow: 0 20px 44px var(--xmas-green-shadow);
+}
+
+.theme-christmas .splash__christmas-scene::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  right: -5%;
+  bottom: -1px;
+  left: -5%;
+  display: block;
+  height: 34px;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: var(--xmas-pine-deep);
+  pointer-events: none;
+}
+
+.theme-christmas .splash__christmas-scene img {
+  border-radius: inherit;
+  outline: 0;
+}
+
+.theme-christmas .splash h1,
+.theme-christmas .splash__sponsor,
+.theme-christmas .splash__button {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  width: auto;
+  transform: none;
+}
+
+.theme-christmas .splash h1 {
+  margin-top: 18px;
+  color: var(--xmas-ivory);
+}
+
+.theme-christmas .splash__sponsor {
+  margin-top: 8px;
+  color: var(--xmas-gold-light);
+}
+
+.theme-christmas .splash__button {
+  min-width: 150px;
+  margin-top: 18px;
+}
+
+.theme-christmas .splash__button:hover {
+  transform: translateY(2px);
+}
+
+.theme-christmas .splash__button:active {
+  transform: translateY(4px);
+}
+
+@media (max-width: 900px) {
+  .theme-christmas .splash {
+    padding: max(24px, env(safe-area-inset-top)) 14px 72px;
+  }
+
+  .theme-christmas .splash__christmas-scene {
+    width: min(760px, calc(100% - 12px));
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-christmas .splash {
+    padding: max(18px, env(safe-area-inset-top)) 10px 60px;
+  }
+
+  .theme-christmas .splash__christmas-scene {
+    width: calc(100% - 16px);
+    border-radius: 22px 22px 16% 16% / 22px 22px 6% 6%;
+  }
+
+  .theme-christmas .splash__christmas-scene::after {
+    height: 18px;
+  }
+
+  .theme-christmas .splash h1 {
+    margin-top: 14px;
+    font-size: 30px;
+  }
+
+  .theme-christmas .splash__sponsor {
+    margin-top: 6px;
+  }
+
+  .theme-christmas .splash__button {
+    margin-top: 14px;
+  }
+}

@@ -1,7 +1,7 @@
 const CROPS = {
   short: { name: "短熟果", minutes: 15, halfRemaining: 3 },
   medium: { name: "中短熟果", minutes: 60, halfRemaining: 5 },
-  peach: { name: "桃子", minutes: 360, halfRemaining: 10 },
+  peach: { name: "6小时作物", minutes: 360, halfRemaining: 10 },
   long: { name: "长熟果", minutes: 960, halfRemaining: 10 },
 };
 
@@ -22,17 +22,21 @@ const ZONE_LABELS = {
   "Asia/Dubai": "迪拜",
 };
 
+const DEFAULT_STATE = Object.freeze({
+  crop: "short",
+  fertilizer: 0,
+  weekend: false,
+  mode: "forward",
+  targetStage: "half",
+  inputZone: "beijing",
+  dualTimezone: false,
+  secondaryZone: "device",
+  comparison: false,
+  weekendOverrideDate: "",
+});
+
 const state = {
-  crop: localStorage.getItem("pineapple-crop") || "short",
-  fertilizer: Number(localStorage.getItem("pineapple-fertilizer") || 0),
-  weekend: localStorage.getItem("pineapple-weekend") === "true",
-  mode: localStorage.getItem("pineapple-mode") || "forward",
-  targetStage: localStorage.getItem("pineapple-target-stage") || "half",
-  inputZone: localStorage.getItem("pineapple-input-zone") || localStorage.getItem("pineapple-timezone") || "beijing",
-  dualTimezone: localStorage.getItem("pineapple-dual-timezone") === "true",
-  secondaryZone: localStorage.getItem("pineapple-secondary-zone") || "device",
-  comparison: localStorage.getItem("pineapple-comparison") === "true",
-  weekendOverrideDate: localStorage.getItem("pineapple-weekend-override-date") || "",
+  ...DEFAULT_STATE,
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -69,6 +73,8 @@ const elements = {
   comparisonToggle: $("#comparisonToggle"),
   comparisonPanel: $("#comparisonPanel"),
   comparisonTable: $("#comparisonTable"),
+  resetButton: $("#resetButton"),
+  resetStatus: $("#resetStatus"),
   scheduleTable: $("#scheduleTable"),
   resultStats: $("#resultStats"),
   resultCard: $(".result-card"),
@@ -278,10 +284,10 @@ function comparisonHarvestTimestamps(crop, fertilizer, plantTimestamp) {
 
 function renderComparison(targetTimestamp) {
   const cropRows = [
-    ["short", "15分钟", "香蕉等"],
-    ["medium", "1小时", "菠萝等"],
-    ["peach", "6小时", "桃子"],
-    ["long", "16小时", "牛油果等"],
+    ["short", "15分钟", "草莓等"],
+    ["medium", "1小时", "杨桃等"],
+    ["peach", "6小时", "苹果等"],
+    ["long", "16小时", "甘蔗等"],
   ];
   const fertilizers = [[0, "不施肥"], [0.1, "蓝肥"], [0.3, "紫肥"], [0.5, "金肥"]];
   const cells = [];
@@ -408,16 +414,29 @@ function selectButtons(selector, attribute, value) {
 }
 
 function saveState() {
-  localStorage.setItem("pineapple-crop", state.crop);
-  localStorage.setItem("pineapple-fertilizer", String(state.fertilizer));
-  localStorage.setItem("pineapple-weekend", String(state.weekend));
-  localStorage.setItem("pineapple-mode", state.mode);
-  localStorage.setItem("pineapple-target-stage", state.targetStage);
-  localStorage.setItem("pineapple-input-zone", state.inputZone);
-  localStorage.setItem("pineapple-dual-timezone", String(state.dualTimezone));
-  localStorage.setItem("pineapple-secondary-zone", state.secondaryZone);
-  localStorage.setItem("pineapple-comparison", String(state.comparison));
-  localStorage.setItem("pineapple-weekend-override-date", state.weekendOverrideDate);
+  // Intentionally memory-only: every reload starts from a clean calculator.
+}
+
+function resetAll() {
+  Object.assign(state, DEFAULT_STATE);
+  elements.weekend.checked = state.weekend;
+  elements.dualTimezone.checked = state.dualTimezone;
+  elements.comparisonToggle.checked = state.comparison;
+  elements.secondaryTimezone.value = state.secondaryZone;
+  selectButtons(".crop-option", "crop", state.crop);
+  selectButtons(".fertilizer-option", "bonus", state.fertilizer);
+  selectButtons(".stage-option", "stage", state.targetStage);
+  selectButtons(".input-zone-option", "inputZone", state.inputZone);
+  $$(".mode-tab").forEach((button) => {
+    const selected = button.dataset.mode === state.mode;
+    button.classList.toggle("is-selected", selected);
+    button.setAttribute("aria-selected", String(selected));
+  });
+  updateTimeControls();
+  setInputsToDate();
+  syncWeekendFromDate();
+  render();
+  elements.resetStatus.textContent = "已清除所有选择，并恢复默认设置。";
 }
 
 function syncWeekendFromDate() {
@@ -522,6 +541,7 @@ function bindEvents() {
   elements.date.addEventListener("input", () => { syncWeekendFromDate(); render(); });
   elements.time.addEventListener("input", render);
   $("#nowButton").addEventListener("click", () => { setInputsToDate(); syncWeekendFromDate(); render(); });
+  elements.resetButton.addEventListener("click", resetAll);
   $("#rulesToggle").addEventListener("click", () => {
     const toggle = $("#rulesToggle");
     const expanded = toggle.getAttribute("aria-expanded") === "true";
